@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简单选项卡</title>
+    <style typr="text/css">
+        *{padding:0px;margin:0px;font:12px normal "microsoft yahei";}/*normal是使用默认粗细的意思*/
+        #tabs{width:290px;height:150px;padding:5px;margin:20px;}
+        #tabs ul{list-style:none;display:block;height:30px;line-height:30px;border-bottom:2px saddlebrown solid;}/* 定义tabs 的子后代ullist-style意思是去掉列表默认的小圆点，display：block定义块状元素，块状元素的长宽高都可以定义，line-height是定义行高，后面是定义上边边框为2px 马鞍棕色 实心的线*/
+
+        #tabs ul li{background:#fff;cursor:pointer;float:left;list-style:none;height:28px;line-height:28px;margin:0px 3px;border:1px solid #aaaaaa;border-bottom:none;display:inline-block;width:60px;text-align:center; }/*cursor:pointer意思就是鼠标放上去变成小手的形状，高度和行高的值一样的话就垂直居中了，margin设置了距离边界的距离上下为0左右为3 然后是设置边框 下边框为空 display定义为内联块状元素，然后设置宽度 很文本居中 */
+        #tabs ul li.on{border-top:2px solid saddlebrown;border-bottom:2px solid #fff ;}/*说白了这个就是设置第一个选择框的样式，不过选择器也是有优先级的，加入都为同一个元素设置颜色就会显示id的 然后是.xx  其次是便签选择器*/
+        #tabs div{height:120px;line-height:25px;border:1px solid #336699;border-top:none;padding:5px;  }
+        .hide{display:none;} /*此元素不会被显示*/
+
+    </style>
+
+    <script type="text/javascript">
+        window.onload=function(){
+            var mytab=document.getElementById("tabs");
+            var myul=document.getElementsByTagName("ul")[0];
+            var myli=myul.getElementsByTagName("li");
+            var mydiv=mytab.getElementsByTagName("div");
+
+            for(var i=0;i<myli.length;i++){
+                myli[i].index=i;
+                myli[i].onclick=function(){
+                    for(var n=0;n<myli.length;n++){
+                        myli[n].className="";
+                        mydiv[n].className="hide";
+                    }
+                    this.className="om";
+                    mydiv[this.index].className="";
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+<!--HTML页面布局-->
+<div id="tabs">
+    <ul>
+        <li class="on">房产</li>
+        <li>家居</li>
+        <li>二手房</li>
+    </ul>
+    <div >
+        275万购昌平邻铁三居 总价20万买一居<br>
+        200万内购五环三居 140万安家东三环<br>
+        北京首现零首付楼盘 53万购东5环50平<br>
+        京楼盘直降5000 中信府 公园楼王现房<br>
+    </div>
+    <div class="hide">
+        40平出租屋大改造 美少女的混搭小窝<br>
+        经典清新简欧爱家 90平老房焕发新生<br>
+        新中式的酷色温情 66平撞色活泼家居<br>
+        瓷砖就像选好老婆 卫生间烟道的设计<br>
+    </div>
+    <div class="hide">
+        通州豪华3居260万 二环稀缺2居250w甩<br>
+        西3环通透2居290万 130万2居限量抢购<br>
+        黄城根小学学区仅260万 121平70万抛!<br>
+        独家别墅280万 苏州桥2居优惠价248万<br>
+    </div>
+</div>
+</body>
+</html>
